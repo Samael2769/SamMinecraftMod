@@ -1,6 +1,8 @@
 package com.example.examplemod.events;
 
 import com.example.examplemod.entities.SamEntity;
+import com.example.examplemod.entities.SamEnemiEntity;
+
 import com.example.examplemod.init.EntityInit;
 import com.example.examplemod.ExampleMod;
 import net.minecraft.world.entity.SpawnPlacements;
@@ -18,11 +20,12 @@ public class ModCommonEvents {
     public static void commonSetup(FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
             SpawnPlacements.register(EntityInit.SAM_ENTITY.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, SamEntity::canSpawn);
+            SpawnPlacements.register(EntityInit.SAM_ENEMI_ENTITY.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE, SamEnemiEntity::canSpawn);
         });
     }
 
     @SubscribeEvent
     public static void entityAttributes(EntityAttributeCreationEvent event) {
-        event.put(EntityInit.SAM_ENTITY.get(), SamEntity.getExampleAttributes().build());
+        event.put(EntityInit.SAM_ENEMI_ENTITY.get(), SamEnemiEntity.getExampleAttributes().build());
     }
 }

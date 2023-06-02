@@ -1,5 +1,6 @@
 package com.example.examplemod;
 
+import com.example.examplemod.init.DimensionInit;
 import com.example.examplemod.init.EntityInit;
 import com.example.examplemod.init.ItemInit;
 import com.mojang.logging.LogUtils;
@@ -47,6 +48,7 @@ public class ExampleMod
         modEventBus.addListener(this::commonSetup);
         ItemInit.ITEMS.register(modEventBus);
         EntityInit.ENTITIES.register(modEventBus);
+        DimensionInit.register();
 
         MinecraftForge.EVENT_BUS.register(this);
     }

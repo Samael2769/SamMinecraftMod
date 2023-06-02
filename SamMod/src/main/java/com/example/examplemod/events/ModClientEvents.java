@@ -2,7 +2,11 @@ package com.example.examplemod.events;
 
 import com.example.examplemod.ExampleMod;
 import com.example.examplemod.client.models.SamEntityModel;
+import com.example.examplemod.client.models.SamEnemiEntityModel;
+
 import com.example.examplemod.client.renderer.SamEntityRenderer;
+import com.example.examplemod.client.renderer.SamEnemiEntityRenderer;
+
 import com.example.examplemod.init.EntityInit;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
@@ -18,9 +22,11 @@ public class ModClientEvents {
     @SubscribeEvent
     public static void entityRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(EntityInit.SAM_ENTITY.get(), SamEntityRenderer::new);
+        event.registerEntityRenderer(EntityInit.SAM_ENEMI_ENTITY.get(), SamEnemiEntityRenderer::new);
     }
     @SubscribeEvent
     public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(SamEntityModel.LAYER_LOCATION, SamEntityModel::createBodyLayer);
+        event.registerLayerDefinition(SamEnemiEntityModel.LAYER_LOCATION, SamEnemiEntityModel::createBodyLayer);
     }
 }
